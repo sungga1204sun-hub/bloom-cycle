@@ -1,0 +1,688 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    background:#000;
+
+    font-family:"Inter",sans-serif;
+
+    color:#fff;
+
+}
+
+canvas{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:1;
+
+    display:block;
+
+}
+
+.canvas-wrap{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+img{
+
+    display:block;
+
+    user-select:none;
+
+}
+
+video{
+
+    display:block;
+
+}
+
+::selection{
+
+    background:white;
+
+    color:black;
+
+}
+/* ---------------- HERO ---------------- */
+
+.hero{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    transition:opacity .6s ease;
+
+}
+
+.hero-video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    z-index:1;
+
+}
+
+.hero-egg{
+
+    position:absolute;
+
+    width:280px;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:3;
+
+    pointer-events:none;
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:4;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:18px;
+
+    pointer-events:none;
+
+}
+
+.hero-title{
+
+    font-size:70px;
+
+    font-weight:300;
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+
+}
+
+.hero-sub{
+
+    width:520px;
+
+    max-width:90vw;
+
+    text-align:center;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+    color:rgba(255,255,255,.7);
+
+}
+
+/* ---------------- HEADER ---------------- */
+
+.site-header{
+
+    position:fixed;
+
+    top:42px;
+
+    left:42px;
+
+    z-index:20;
+
+}
+
+.logo{
+
+    font-size:15px;
+
+    letter-spacing:.28em;
+
+    text-transform:uppercase;
+
+    transition:.35s;
+
+}
+
+.logo:hover{
+
+    opacity:.6;
+
+}
+
+/* ---------------- FADE ---------------- */
+
+#fade{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:999;
+
+}
+
+/* ---------------- LOADING ---------------- */
+
+#loading{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+    z-index:9999;
+
+}
+
+.loading-logo{
+
+    font-size:24px;
+
+    letter-spacing:.4em;
+
+}
+
+.loading-line{
+
+    width:220px;
+
+    height:2px;
+
+    background:rgba(255,255,255,.15);
+
+    overflow:hidden;
+
+}
+
+.loading-bar{
+
+    width:0;
+
+    height:100%;
+
+    background:#fff;
+
+}
+/* ---------------- FLOWER INFO ---------------- */
+
+.flower-info{
+
+    position:fixed;
+
+    left:60px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    opacity:0;
+
+    transition:.45s;
+
+    pointer-events:none;
+
+    z-index:15;
+
+    max-width:260px;
+
+}
+
+.flower-info.right{
+
+    left:auto;
+
+    right:60px;
+
+    text-align:right;
+
+}
+
+.flower-info.show{
+
+    opacity:1;
+
+    transform:translateY(-50%) translateX(0);
+
+}
+
+.flower-number{
+
+    display:block;
+
+    margin-bottom:12px;
+
+    font-size:14px;
+
+    letter-spacing:.4em;
+
+    color:rgba(255,255,255,.45);
+
+}
+
+.flower-info h2{
+
+    font-size:44px;
+
+    font-weight:300;
+
+    letter-spacing:.15em;
+
+    margin-bottom:16px;
+
+}
+
+.flower-info p{
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,.68);
+
+}
+
+/* ---------------- SCROLL UI ---------------- */
+
+.scroll-ui{
+
+    position:fixed;
+
+    right:45px;
+
+    bottom:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    z-index:30;
+
+}
+
+.scroll-ui span{
+
+    font-size:12px;
+
+    letter-spacing:.35em;
+
+    color:rgba(255,255,255,.75);
+
+}
+
+.scroll-line{
+
+    width:90px;
+
+    height:1px;
+
+    background:rgba(255,255,255,.25);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.scroll-dot{
+
+    position:absolute;
+
+    left:0;
+
+    top:50%;
+
+    width:18px;
+
+    height:1px;
+
+    background:#fff;
+
+    transform:translateY(-50%);
+
+    animation:scrollMove 1.6s infinite ease-in-out;
+
+}
+
+@keyframes scrollMove{
+
+    0%{
+
+        left:-18px;
+
+    }
+
+    100%{
+
+        left:100%;
+
+    }
+
+}
+
+/* ---------------- CURSOR ---------------- */
+
+.custom-cursor{
+
+    position:fixed;
+
+    width:18px;
+
+    height:18px;
+
+    border:1px solid rgba(255,255,255,.65);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9998;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+
+    width .2s,
+
+    height .2s,
+
+    border-color .2s;
+
+}
+/* ---------------- ANIMATION ---------------- */
+
+.hero,
+.hero-content,
+.flower-info,
+.site-header,
+.scroll-ui{
+
+    will-change:
+    transform,
+    opacity;
+
+}
+
+.hero-title{
+
+    animation:
+    titleFade
+    1.4s
+    ease
+    forwards;
+
+}
+
+.hero-sub{
+
+    animation:
+    subFade
+    1.8s
+    ease
+    forwards;
+
+}
+
+@keyframes titleFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+@keyframes subFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+/* ---------------- LOADING ---------------- */
+
+.loading-bar{
+
+    animation:
+
+    loadingBar
+
+    2.2s
+
+    ease
+
+    forwards;
+
+}
+
+@keyframes loadingBar{
+
+    from{
+
+        width:0%;
+
+    }
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+
+.loading-hide{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+
+    opacity
+
+    .8s
+
+    ease;
+
+}
+
+/* ---------------- HOVER ---------------- */
+
+.logo:hover{
+
+    letter-spacing:.35em;
+
+}
+
+.flower-info h2{
+
+    transition:.35s;
+
+}
+
+.flower-info.show h2{
+
+    transform:
+
+    translateX(8px);
+
+}
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width:768px){
+
+.hero-title{
+
+    font-size:36px;
+
+    letter-spacing:.15em;
+
+}
+
+.hero-sub{
+
+    width:85vw;
+
+    font-size:13px;
+
+}
+
+.hero-egg{
+
+    width:180px;
+
+}
+
+.site-header{
+
+    left:24px;
+
+    top:24px;
+
+}
+
+.scroll-ui{
+
+    right:24px;
+
+    bottom:24px;
+
+}
+
+.flower-info{
+
+    left:24px;
+
+    max-width:180px;
+
+}
+
+.flower-info.right{
+
+    right:24px;
+
+}
+
+.flower-info h2{
+
+    font-size:26px;
+
+}
+
+.flower-info p{
+
+    font-size:12px;
+
+}
+
+}
