@@ -1,6 +1,6 @@
 const cursor = document.createElement("img")
 
-cursor.src = "/assets/cursor.png"
+cursor.src = `${import.meta.env.BASE_URL}assets/cursor.png`
 
 cursor.style.position = "fixed"
 cursor.style.left = "100px"
